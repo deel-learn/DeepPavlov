@@ -1,5 +1,5 @@
 Cython==0.27.1
-spacy
+spacy==2.0.5
 https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.0.0/en_core_web_sm-2.0.0.tar.gz#en_core_web_sm
 lxml==4.1.1
 tqdm==4.19.5
