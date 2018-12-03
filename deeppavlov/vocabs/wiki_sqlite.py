@@ -42,8 +42,9 @@ class WikiSQLiteVocab(SQLiteDataIterator):
             doc_ids = [self.get_doc_ids()]
 
         for ids in doc_ids:
-            contents = [self.get_doc_content(int(doc_id)) if isinstance(doc_id, np.integer) else doc_id for doc_id in
-                        ids]
+            contents = [
+                self.get_doc_content(int(doc_id)) if isinstance(doc_id, np.integer) else
+                self.get_doc_content(doc_id) for doc_id in ids]
             if self.join_docs:
                 contents = ' '.join(contents)
             all_contents.append(contents)

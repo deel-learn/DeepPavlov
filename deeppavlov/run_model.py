@@ -35,6 +35,7 @@ from deeppavlov.core.common.file import read_json
 # config_path = '/media/olga/Data/projects/iPavlov/DeepPavlov/deeppavlov/configs/odqa/en_ranker_tfidf_drones.json'
 # config_path = '/media/olga/Data/projects/DeepPavlov/deeppavlov/configs/odqa/bhge/bhge_odqa.json'
 
+# config_path = '/media/olga/Data/projects/DeepPavlov/deeppavlov/configs/odqa/bhge/bhge_odqa.json'
 config_path = '/media/olga/Data/projects/DeepPavlov/deeppavlov/configs/odqa/bhge/bhge_retrieval_demo_optimized_2.json'
 
 # interact_model(config_path)
@@ -43,6 +44,6 @@ model = build_model_from_config(read_json(config_path))
 # data=["How to do planned sidetrack off cement plug in AutoTrack systems?",
 #       "What is the total feedstock for Sulphur recovery for benchmark plant (in kmol/h)?",
 #       "What polyol do with productive rock?"]
-data=["what is polyol?"]
+data=["what is polyol?", "Usage of caustic soda", "What is filter cake?"]
 res = model(data)
 print(res)
