@@ -17,18 +17,18 @@ from deeppavlov.core.commands.infer import build_model_from_config
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 fmt = logging.Formatter('%(asctime)s: [ %(message)s ]', '%m/%d/%Y %I:%M:%S %p')
-file = logging.FileHandler('../eval_logs/ranker_ensemble_bhge_tables.log')
+file = logging.FileHandler('../eval_logs/ranker_ensemble_enog_tables.log')
 file.setFormatter(fmt)
 logger.addHandler(file)
 
 parser = argparse.ArgumentParser()
 
 parser.add_argument("-config_path", help="path to a JSON ranker config", type=str,
-                    default='../../../../deeppavlov/configs/odqa/bhge/bhge_retrieval_demo_lists_ensemble.json')
+                    default='../../../../deeppavlov/configs/odqa/enog/enog_retrieval_demo_lists_ensemble.json')
 parser.add_argument("-dataset_path", help="path to a QA TSV dataset", type=str,
-                    default='/media/olga/Data/datasets/bhge/lists/questions_to_numbers.csv')
+                    default='/media/olga/Data/datasets/enog/lists/questions_to_numbers.csv')
 parser.add_argument("-output_path", help="path to a QA TSV dataset", type=str,
-                    default='/media/olga/Data/datasets/bhge/lists/lists_predictions.csv')
+                    default='/media/olga/Data/datasets/enog/lists/lists_predictions.csv')
 
 
 def normalize(s: str):

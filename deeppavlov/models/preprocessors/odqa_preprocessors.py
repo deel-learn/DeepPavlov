@@ -176,7 +176,7 @@ class TableContextAdder(Component):
         return batch_answer_score_text
 
 
-# @register('bhge_formatter')
+# @register('enog_formatter')
 # class BHGEFormatter(Component):
 #
 #     def __init__(self, **kwargs):

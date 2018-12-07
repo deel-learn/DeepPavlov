@@ -6,9 +6,9 @@ from deeppavlov.dataset_iterators.sqlite_iterator import SQLiteDataIterator
 parser = argparse.ArgumentParser()
 
 parser.add_argument("-db_path", help="path to a JSON ranker config", type=str,
-                    default='/media/olga/Data/projects/DeepPavlov/download/general_electrics/ge_book.db')
+                    default='/media/olga/Data/projects/DeepPavlov/download/enog/ge_book.db')
 parser.add_argument("-save_path", help="path where the ready csv should be saved", type=str,
-                    default='/media/olga/Data/datasets/bhge/ge_book.csv')
+                    default='/media/olga/Data/datasets/enog/ge_book.csv')
 
 
 def main():

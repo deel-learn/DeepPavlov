@@ -19,7 +19,7 @@
         "shuffle": false,
         "join_docs": false,
         "return_all_content": true,
-        "load_path": "general_electrics/ge_book.db"
+        "load_path": "enog/ge_book.db"
       },
       {
         "name": "query_paragraph_tuplifier",
@@ -63,7 +63,7 @@
   },
   "metadata": {
     "download": [
-      "http://lnsigo.mipt.ru/export/deeppavlov_data/general_electrics.tar.gz",
+      "http://lnsigo.mipt.ru/export/deeppavlov_data/enog.tar.gz",
       "http://lnsigo.mipt.ru/export/deeppavlov_data/squad_selqa_model_noans_tf1.8.tar.gz",
       {
         "url": "http://lnsigo.mipt.ru/export/embeddings/wiki-news-300d-1M.vec",

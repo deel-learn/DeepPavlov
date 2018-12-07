@@ -8,7 +8,7 @@
     ],
     "pipe": [
       {
-        "config_path": "../deeppavlov/configs/odqa/bhge/bhge_retrieval_demo_optimized_2.json",
+        "config_path": "../deeppavlov/configs/odqa/enog/enog_retrieval_demo_optimized_2.json",
         "in": [
           "question_raw"
         ],
@@ -60,7 +60,7 @@
   },
   "metadata": {
     "download": [
-      "http://lnsigo.mipt.ru/export/deeppavlov_data/general_electrics.tar.gz",
+      "http://lnsigo.mipt.ru/export/deeppavlov_data/enog.tar.gz",
       "http://lnsigo.mipt.ru/export/deeppavlov_data/multi_squad_model_noans.tar.gz",
       {
         "url": "http://lnsigo.mipt.ru/export/embeddings/wiki-news-300d-1M.vec",

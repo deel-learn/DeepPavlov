@@ -1,15 +1,15 @@
 {
   "dataset_reader": {
     "class": "deeppavlov.dataset_readers.odqa_reader:ODQADataReader",
-    "data_path": "general_electrics/bhge_tables.db",
-    "save_path": "general_electrics/bhge_tables.db",
+    "data_path": "enog/enog_tables.db",
+    "save_path": "enog/enog_tables.db",
     "dataset_format": "sqlite"
   },
   "dataset_iterator": {
     "name": "sqlite_iterator",
-    "data_dir": "general_electrics",
+    "data_dir": "enog",
     "shuffle": false,
-    "load_path": "general_electrics/bhge_tables.db"
+    "load_path": "enog/enog_tables.db"
   },
   "chainer": {
     "in": [
@@ -38,8 +38,8 @@
           "fit_on_batch": [
             "questions_raw"
           ],
-          "save_path": "general_electrics/bhge_tables_tfidf.npz",
-          "load_path": "general_electrics/bhge_tables_tfidf.npz",
+          "save_path": "enog/enog_tables_tfidf.npz",
+          "load_path": "enog/enog_tables_tfidf.npz",
           "tokenizer": {
             "name": "stream_spacy_tokenizer",
             "lemmas": true,
@@ -70,7 +70,7 @@
   },
   "metadata": {
     "download": [
-       "http://lnsigo.mipt.ru/export/deeppavlov_data/general_electrics.tar.gz"
+       "http://lnsigo.mipt.ru/export/deeppavlov_data/enog.tar.gz"
     ]
   }
 }

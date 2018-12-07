@@ -61,7 +61,7 @@ class TFHUBParagraphOptRanker(Component):
         return dot_values, ids
 
 
-# ranker = TFHUBParagraphOptRanker("/media/olga/Data/projects/DeepPavlov/download/general_electrics/use_vectors.npy",
+# ranker = TFHUBParagraphOptRanker("/media/olga/Data/projects/DeepPavlov/download/enog/use_vectors.npy",
 #                                  USEEncoder())
 # questions = ["How can I get some?", "What is oil?"]
 # res = ranker(questions)

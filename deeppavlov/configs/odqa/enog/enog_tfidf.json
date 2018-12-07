@@ -1,27 +1,15 @@
 {
-  "dataset_reader": {
-    "class": "deeppavlov.dataset_readers.odqa_reader:ODQADataReader",
-    "data_path": "/media/olga/Data/datasets/bhge/lists/lists_as_txt",
-    "save_path": "general_electrics/bhge_lists.db",
-    "dataset_format": "sqlite"
-  },
-  "dataset_iterator": {
-    "name": "sqlite_iterator",
-    "data_dir": "general_electrics",
-    "shuffle": false,
-    "load_path": "general_electrics/bhge_lists.db"
-  },
   "chainer": {
     "in": [
       "question_raw"
     ],
     "out": [
-      "doc_ids_as_int"
+      "rank_text_score_id"
     ],
     "pipe": [
       {
         "name": "tfidf_ranker",
-        "top_n": 46,
+        "top_n": 20,
         "active": true,
         "in": [
           "question_raw"
@@ -38,8 +26,8 @@
           "fit_on_batch": [
             "questions_raw"
           ],
-          "save_path": "general_electrics/bhge_lists_tfidf.npz",
-          "load_path": "general_electrics/bhge_lists_tfidf.npz",
+          "save_path": "enog/en_ge_book_tfidf.npz",
+          "load_path": "enog/en_ge_book_tfidf.npz",
           "tokenizer": {
             "name": "stream_spacy_tokenizer",
             "lemmas": true,
@@ -47,29 +35,38 @@
               1,
               2
             ],
-            "sentences": true,
-            "alphas_only": false
+            "stopwords": "sklearn"
           }
         }
       },
       {
-        "name": "table_names_converter",
+        "name": "wiki_sqlite_vocab",
         "in": [
           "doc_ids"
         ],
         "out": [
-          "doc_ids_as_int"
-        ]
+          "context_raw",
+          "doc_ids"
+        ],
+        "shuffle": false,
+        "join_docs": false,
+        "load_path": "enog/ge_book.db"
+      },
+      {
+        "name": "rank_doc_score_tuplifier",
+        "in": ["context_raw", "doc_scores", "doc_ids"],
+        "out": ["rank_text_score_id"]
       }
     ]
   },
   "train": {
     "validate_best": false,
     "test_best": false,
-    "batch_size": 10
+    "batch_size": 10000
   },
   "metadata": {
     "download": [
+      "http://lnsigo.mipt.ru/export/deeppavlov_data/enog.tar.gz"
     ]
   }
 }

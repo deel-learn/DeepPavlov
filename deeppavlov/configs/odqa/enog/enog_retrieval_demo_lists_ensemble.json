@@ -9,7 +9,7 @@
     "pipe": [
       {
         "name": "tfidf_ranker",
-        "top_n": 18,
+        "top_n": 46,
         "active": true,
         "in": [
           "question_raw"
@@ -26,8 +26,8 @@
           "fit_on_batch": [
             "questions_raw"
           ],
-          "save_path": "general_electrics/bhge_tables_tfidf.npz",
-          "load_path": "general_electrics/bhge_tables_tfidf.npz",
+          "save_path": "enog/enog_lists_tfidf.npz",
+          "load_path": "enog/enog_lists_tfidf.npz",
           "tokenizer": {
             "name": "stream_spacy_tokenizer",
             "lemmas": true,
@@ -35,9 +35,8 @@
               1,
               2
             ],
-            "stopwords": "sklearn",
             "sentences": true,
-            "alphas_only": true
+            "alphas_only": false
           }
         }
       },
@@ -53,12 +52,12 @@
         ],
         "shuffle": false,
         "join_docs": false,
-        "load_path": "general_electrics/bhge_tables.db"
+        "load_path": "enog/enog_lists.db"
       },
       {
         "name": "tfhub_paragraph_opt_ranker",
-        "load_path": "general_electrics/tables_use_vectors.npy",
-        "top_n": 17,
+        "load_path": "enog/lists_use_vectors.npy",
+        "top_n": 46,
         "active": true,
         "encoder": {
           "name": "use_encoder"
@@ -73,7 +72,6 @@
       },
       {
         "name": "table_indices_converter",
-        "lists": false,
         "in": ["doc_ids_use"],
         "out": ["doc_ids_use_titles"]
       },
@@ -140,7 +138,7 @@
   },
   "metadata": {
     "download": [
-      "http://lnsigo.mipt.ru/export/deeppavlov_data/general_electrics.tar.gz"
+      "http://lnsigo.mipt.ru/export/deeppavlov_data/enog.tar.gz"
     ]
   }
 }

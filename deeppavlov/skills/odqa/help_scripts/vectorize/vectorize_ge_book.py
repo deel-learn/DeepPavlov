@@ -3,10 +3,10 @@ import numpy as np
 from deeppavlov.dataset_iterators.sqlite_iterator import SQLiteDataIterator
 from deeppavlov.skills.odqa.encoders.use_encoder import USEEncoder
 
-iterator = SQLiteDataIterator(load_path='/media/olga/Data/projects/DeepPavlov/download/general_electrics/ge_book.db',
+iterator = SQLiteDataIterator(load_path='/media/olga/Data/projects/DeepPavlov/download/enog/ge_book.db',
                               shuffle=False)
 encoder = USEEncoder()
-SAVE_PATH = '/media/olga/Data/projects/DeepPavlov/download/general_electrics/use_vectors'
+SAVE_PATH = '/media/olga/Data/projects/DeepPavlov/download/enog/use_vectors'
 
 all_vectors = []
 all_lens = []

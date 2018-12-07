@@ -9,38 +9,6 @@
     "pipe": [
       {
         "name": "tfidf_ranker",
-        "top_n": 500,
-        "active": true,
-        "in": [
-          "question_raw"
-        ],
-        "out": [
-          "doc_ids_500",
-          "doc_scores_500"
-        ],
-        "fit_on_batch": [
-          "questions_raw"
-        ],
-        "vectorizer": {
-          "name": "hashing_tfidf_vectorizer",
-          "fit_on_batch": [
-            "questions_raw"
-          ],
-          "save_path": "general_electrics/en_ge_book_tfidf.npz",
-          "load_path": "general_electrics/en_ge_book_tfidf.npz",
-          "tokenizer": {
-            "name": "stream_spacy_tokenizer",
-            "lemmas": true,
-            "ngram_range": [
-              1,
-              2
-            ],
-            "stopwords": "sklearn"
-          }
-        }
-      },
-      {
-        "name": "tfidf_ranker",
         "top_n": 20,
         "active": true,
         "in": [
@@ -58,8 +26,8 @@
           "fit_on_batch": [
             "questions_raw"
           ],
-          "save_path": "general_electrics/en_ge_book_tfidf.npz",
-          "load_path": "general_electrics/en_ge_book_tfidf.npz",
+          "save_path": "enog/en_ge_book_tfidf.npz",
+          "load_path": "enog/en_ge_book_tfidf.npz",
           "tokenizer": {
             "name": "stream_spacy_tokenizer",
             "lemmas": true,
@@ -73,7 +41,6 @@
       },
       {
         "name": "wiki_sqlite_vocab",
-        "id": "my_wiki_sqlite_vocab",
         "in": [
           "doc_ids"
         ],
@@ -83,12 +50,16 @@
         ],
         "shuffle": false,
         "join_docs": false,
-        "load_path": "general_electrics/ge_book.db"
+        "load_path": "enog/ge_book.db"
       },
       {
-        "ref": "my_wiki_sqlite_vocab",
+        "name": "wiki_sqlite_vocab",
+        "load_path": "enog/ge_book.db",
+        "return_all_content": true,
+        "shuffle": false,
+        "join_docs": false,
         "in": [
-          "doc_ids_500"
+          "question_raw"
         ],
         "out": [
           "context_raw_all",
@@ -165,8 +136,8 @@
         "ref": "my_rank_doc_score_tuplifier",
         "in": [
           "context_raw",
-          "doc_scores_500",
-          "doc_ids_500"
+          "doc_scores",
+          "doc_ids"
         ],
         "out": [
           "rank_text_score_id_tfidf"
@@ -193,7 +164,7 @@
   },
   "metadata": {
     "download": [
-     "http://lnsigo.mipt.ru/export/deeppavlov_data/general_electrics.tar.gz",
+     "http://lnsigo.mipt.ru/export/deeppavlov_data/enog.tar.gz",
       "http://lnsigo.mipt.ru/export/deeppavlov_data/squad_selqa_model_noans_tf1.8.tar.gz",
       {
         "url": "http://lnsigo.mipt.ru/export/embeddings/wiki-news-300d-1M.vec",

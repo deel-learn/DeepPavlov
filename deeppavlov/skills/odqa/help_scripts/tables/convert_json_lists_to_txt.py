@@ -6,9 +6,9 @@ from deeppavlov.core.common.file import read_json
 parser = argparse.ArgumentParser()
 
 parser.add_argument("-lists_path", help="path to a JSON file with parsed tables", type=str,
-                    default='/media/olga/Data/datasets/bhge/lists/lists_with_questions.json')
+                    default='/media/olga/Data/datasets/enog/lists/lists_with_questions.json')
 parser.add_argument("-save_path", help="path to a JSON file with parsed tables", type=str,
-                    default='/media/olga/Data/datasets/bhge/lists/lists_as_txt')
+                    default='/media/olga/Data/datasets/enog/lists/lists_as_txt')
 
 
 def main():

@@ -17,18 +17,18 @@ from deeppavlov.core.commands.infer import build_model_from_config
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 fmt = logging.Formatter('%(asctime)s: [ %(message)s ]', '%m/%d/%Y %I:%M:%S %p')
-file = logging.FileHandler('../eval_logs/ranker_ensemble_bhge_tables.log')
+file = logging.FileHandler('../eval_logs/ranker_ensemble_enog_tables.log')
 file.setFormatter(fmt)
 logger.addHandler(file)
 
 parser = argparse.ArgumentParser()
 
 parser.add_argument("-config_path", help="path to a JSON ranker config", type=str,
-                    default='../../../../deeppavlov/configs/odqa/bhge/bhge_retrieval_demo_tables_tfidf.json')
+                    default='../../../../deeppavlov/configs/odqa/enog/enog_retrieval_demo_tables_tfidf.json')
 parser.add_argument("-dataset_path", help="path to a QA TSV dataset", type=str,
-                    default='/media/olga/Data/datasets/bhge/tables/questions_v3_answers.tsv')
+                    default='/media/olga/Data/datasets/enog/tables/questions_v3_answers.tsv')
 parser.add_argument("-output_path", help="path to a QA TSV dataset", type=str,
-                    default='/media/olga/Data/datasets/bhge/tables/tables_predictions_del.csv')
+                    default='/media/olga/Data/datasets/enog/tables/tables_predictions_del.csv')
 
 
 def normalize(s: str):

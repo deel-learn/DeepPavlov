@@ -8,7 +8,7 @@
     ],
     "pipe": [
       {
-        "config_path": "../deeppavlov/configs/odqa/bhge/bhge_retrieval_demo_tables_tfidf_top_1.json",
+        "config_path": "../deeppavlov/configs/odqa/enog/enog_retrieval_demo_tables_tfidf_top_1.json",
         "in": [
           "question_raw"
         ],
@@ -18,7 +18,7 @@
       },
       {
         "name": "json_vocab",
-        "load_path": "general_electrics/corrected_tables_v2.json",
+        "load_path": "enog/corrected_tables_v2.json",
         "in": [
           "doc_ids_as_int"
         ],
@@ -50,7 +50,7 @@
       },
       {
         "name": "json_vocab",
-        "load_path": "general_electrics/corrected_tables_v2.json",
+        "load_path": "enog/corrected_tables_v2.json",
         "return_all_content": true,
         "in": [
           "doc_ids_as_int"
@@ -68,7 +68,7 @@
   },
   "metadata": {
     "download": [
-      "http://lnsigo.mipt.ru/export/deeppavlov_data/general_electrics.tar.gz",
+      "http://lnsigo.mipt.ru/export/deeppavlov_data/enog.tar.gz",
       "http://lnsigo.mipt.ru/export/deeppavlov_data/multi_squad_model_noans.tar.gz",
       {
         "url": "http://lnsigo.mipt.ru/export/embeddings/wiki-news-300d-1M.vec",

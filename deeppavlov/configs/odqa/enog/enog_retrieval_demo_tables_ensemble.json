@@ -4,44 +4,12 @@
       "question_raw"
     ],
     "out": [
-      "rank_text_score_id_ensemble"
+      "doc_ids_as_int"
     ],
     "pipe": [
       {
         "name": "tfidf_ranker",
-        "top_n": 500,
-        "active": true,
-        "in": [
-          "question_raw"
-        ],
-        "out": [
-          "doc_ids_500",
-          "doc_scores_500"
-        ],
-        "fit_on_batch": [
-          "questions_raw"
-        ],
-        "vectorizer": {
-          "name": "hashing_tfidf_vectorizer",
-          "fit_on_batch": [
-            "questions_raw"
-          ],
-          "save_path": "general_electrics/en_ge_book_tfidf.npz",
-          "load_path": "general_electrics/en_ge_book_tfidf.npz",
-          "tokenizer": {
-            "name": "stream_spacy_tokenizer",
-            "lemmas": true,
-            "ngram_range": [
-              1,
-              2
-            ],
-            "stopwords": "sklearn"
-          }
-        }
-      },
-      {
-        "name": "tfidf_ranker",
-        "top_n": 20,
+        "top_n": 18,
         "active": true,
         "in": [
           "question_raw"
@@ -58,8 +26,8 @@
           "fit_on_batch": [
             "questions_raw"
           ],
-          "save_path": "general_electrics/en_ge_book_tfidf.npz",
-          "load_path": "general_electrics/en_ge_book_tfidf.npz",
+          "save_path": "enog/enog_tables_tfidf.npz",
+          "load_path": "enog/enog_tables_tfidf.npz",
           "tokenizer": {
             "name": "stream_spacy_tokenizer",
             "lemmas": true,
@@ -67,7 +35,9 @@
               1,
               2
             ],
-            "stopwords": "sklearn"
+            "stopwords": "sklearn",
+            "sentences": true,
+            "alphas_only": true
           }
         }
       },
@@ -83,33 +53,12 @@
         ],
         "shuffle": false,
         "join_docs": false,
-        "load_path": "general_electrics/ge_book.db"
-      },
-      {
-        "ref": "my_wiki_sqlite_vocab",
-        "in": [
-          "doc_ids_500"
-        ],
-        "out": [
-          "context_raw_500",
-          "doc_ids_500"
-        ]
-      },
-      {
-        "name": "query_paragraph_tuplifier",
-        "in": [
-          "question_raw",
-          "context_raw_500",
-          "doc_ids_500"
-        ],
-        "out": [
-          "question_paragraph_tuples"
-        ]
+        "load_path": "enog/enog_tables.db"
       },
       {
         "name": "tfhub_paragraph_opt_ranker",
-        "load_path": "general_electrics/use_vectors.npy",
-        "top_n": 20,
+        "load_path": "enog/tables_use_vectors.npy",
+        "top_n": 17,
         "active": true,
         "encoder": {
           "name": "use_encoder"
@@ -123,13 +72,19 @@
         ]
       },
       {
+        "name": "table_indices_converter",
+        "lists": false,
+        "in": ["doc_ids_use"],
+        "out": ["doc_ids_use_titles"]
+      },
+      {
         "ref": "my_wiki_sqlite_vocab",
         "in": [
-          "doc_ids_use"
+          "doc_ids_use_titles"
         ],
         "out": [
           "docs_use",
-          "doc_ids_use"
+          "doc_ids_use_titles"
         ]
       },
       {
@@ -138,7 +93,7 @@
         "in": [
           "docs_use",
           "doc_scores_use",
-          "doc_ids_use"
+          "doc_ids_use_titles"
         ],
         "out": [
           "rank_text_score_id_use"
@@ -148,8 +103,8 @@
         "ref": "my_rank_doc_score_tuplifier",
         "in": [
           "context_raw",
-          "doc_scores_500",
-          "doc_ids_500"
+          "doc_scores",
+          "doc_ids"
         ],
         "out": [
           "rank_text_score_id_tfidf"
@@ -157,13 +112,23 @@
       },
       {
         "name": "ensemble_ranker",
-        "top_n": 5,
+        "top_n": 3,
         "in": [
           "rank_text_score_id_tfidf",
           "rank_text_score_id_use"
         ],
         "out": [
           "rank_text_score_id_ensemble"
+        ]
+      },
+      {
+        "name": "table_names_converter",
+        "converted_type": "ensemble",
+        "in": [
+          "rank_text_score_id_ensemble"
+        ],
+        "out": [
+          "doc_ids_as_int"
         ]
       }
     ]
@@ -175,7 +140,7 @@
   },
   "metadata": {
     "download": [
-      "http://lnsigo.mipt.ru/export/deeppavlov_data/general_electrics.tar.gz"
+      "http://lnsigo.mipt.ru/export/deeppavlov_data/enog.tar.gz"
     ]
   }
 }

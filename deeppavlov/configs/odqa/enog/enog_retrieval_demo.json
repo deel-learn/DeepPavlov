@@ -8,7 +8,7 @@
     ],
     "pipe": [
       {
-        "config_path": "../deeppavlov/configs/odqa/general_electrics_tfidf.json",
+        "config_path": "../deeppavlov/configs/odqa/enog_tfidf.json",
         "in": [
           "question_raw"
         ],
@@ -17,7 +17,7 @@
         ]
       },
       {
-        "config_path": "../deeppavlov/configs/odqa/general_electrics_use.json",
+        "config_path": "../deeppavlov/configs/odqa/enog_use.json",
         "in": [
           "question_raw"
         ],
@@ -26,7 +26,7 @@
         ]
       },
       {
-        "config_path": "../deeppavlov/configs/odqa/general_electrics_squad.json",
+        "config_path": "../deeppavlov/configs/odqa/enog_squad.json",
         "in": [
           "question_raw"
         ],
